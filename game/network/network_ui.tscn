@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://be0p2rhviwg5u"]
+
+[ext_resource type="Script" uid="uid://suse56whqd5n" path="res://game/network/network_ui.gd" id="1_pnxti"]
+
+[node name="NetworkUI" type="VBoxContainer" unique_id=469652314]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -93.0
+offset_right = 200.0
+grow_vertical = 0
+script = ExtResource("1_pnxti")
+
+[node name="CheckButton" type="CheckButton" parent="." unique_id=1179671309]
+layout_mode = 2
+button_pressed = true
+text = "Connection Details"
+
+[node name="Control" type="MarginContainer" parent="." unique_id=1065980248]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NetworkTab" type="HFlowContainer" parent="Control" unique_id=279491495]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Choose Network Type" type="Label" parent="Control/NetworkTab" unique_id=443450420]
+layout_mode = 2
+text = "Choose a network type:"
+
+[node name="Enet" type="Button" parent="Control/NetworkTab" unique_id=853933805]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enet"
+
+[node name="Steam" type="Button" parent="Control/NetworkTab" unique_id=1076120494]
+layout_mode = 2
+text = "Steam"
+
+[node name="Solo" type="Button" parent="Control/NetworkTab" unique_id=486925941]
+layout_mode = 2
+text = "Solo"
+
+[node name="EnetConnectTab" type="HFlowContainer" parent="Control" unique_id=1390962680]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="IP" type="LineEdit" parent="Control/EnetConnectTab" unique_id=863577542]
+unique_name_in_owner = true
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "IP Address"
+expand_to_text_length = true
+
+[node name="Join" type="Button" parent="Control/EnetConnectTab" unique_id=770177283]
+layout_mode = 2
+text = "Join
+"
+
+[node name="Host" type="Button" parent="Control/EnetConnectTab" unique_id=661175891]
+layout_mode = 2
+text = "Host"
+
+[node name="Back" type="Button" parent="Control/EnetConnectTab" unique_id=291664854]
+layout_mode = 2
+text = "Back"
+
+[node name="SteamLobbyBrowser" type="HFlowContainer" parent="Control" unique_id=1211900122]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="SteamLobbyList" type="VBoxContainer" parent="Control/SteamLobbyBrowser" unique_id=1589880394]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/SteamLobbyBrowser/SteamLobbyList" unique_id=1285999307]
+layout_mode = 2
+text = "Lobby Name: TEST | Players: 1/4"
+
+[node name="Host" type="Button" parent="Control/SteamLobbyBrowser" unique_id=1203868541]
+layout_mode = 2
+text = "Host"
+
+[node name="Back" type="Button" parent="Control/SteamLobbyBrowser" unique_id=105972370]
+layout_mode = 2
+text = "Back"
+
+[node name="LobbyTab" type="HFlowContainer" parent="Control" unique_id=314274879]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="NetworkID" type="Label" parent="Control/LobbyTab" unique_id=1261230374]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Network ID: 3204594532"
+
+[node name="LobbyID" type="Label" parent="Control/LobbyTab" unique_id=409502969]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lobby ID: 127.0.0.1"
+
+[node name="ConnectedPlayers" type="Label" parent="Control/LobbyTab" unique_id=976340165]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Connected Players:
+Player1
+Player2
+Player3"
+
+[node name="Disconnect" type="Button" parent="Control/LobbyTab" unique_id=266220882]
+layout_mode = 2
+text = "Disconnect"
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="Control/NetworkTab/Enet" to="." method="_on_enet_pressed"]
+[connection signal="pressed" from="Control/NetworkTab/Steam" to="." method="_on_steam_pressed"]
+[connection signal="pressed" from="Control/NetworkTab/Solo" to="." method="_on_solo_pressed"]
+[connection signal="text_submitted" from="Control/EnetConnectTab/IP" to="." method="_on_ip_text_submitted"]
+[connection signal="pressed" from="Control/EnetConnectTab/Join" to="." method="_on_join_enet_pressed"]
+[connection signal="pressed" from="Control/EnetConnectTab/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Control/EnetConnectTab/Back" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="Control/SteamLobbyBrowser/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Control/SteamLobbyBrowser/Back" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="Control/LobbyTab/Disconnect" to="." method="_on_back_to_main_pressed"]

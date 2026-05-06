@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bvkyttr1fk5le"]
+
+[ext_resource type="Script" uid="uid://bg6wcmds5g5wl" path="res://game/screens/enet_setup.gd" id="1_qyauo"]
+
+[node name="EnetSetup" type="Control" unique_id=857553630]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qyauo")
+
+[node name="EnetConnectTab" type="HFlowContainer" parent="." unique_id=370360931]
+unique_name_in_owner = true
+layout_mode = 0
+
+[node name="Label" type="Label" parent="." unique_id=486861820]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 45.0
+offset_right = 238.0
+offset_bottom = 68.0
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1894233551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 43
+theme_override_constants/margin_top = 43
+theme_override_constants/margin_right = 43
+theme_override_constants/margin_bottom = 43
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=434799536]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="IP" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=823922402]
+unique_name_in_owner = true
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "IP Address"
+expand_to_text_length = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=473386290]
+layout_mode = 2
+
+[node name="Join" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1240085143]
+layout_mode = 2
+text = "Join
+"
+
+[node name="Host" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=999753194]
+layout_mode = 2
+text = "Host"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1657291032]
+layout_mode = 2
+text = "Back"
+
+[connection signal="text_submitted" from="MarginContainer/VBoxContainer/IP" to="." method="_on_ip_text_submitted"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

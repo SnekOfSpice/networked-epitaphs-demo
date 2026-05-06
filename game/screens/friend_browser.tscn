@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://q3c5wnsk5mdl"]
+
+[ext_resource type="Script" uid="uid://dm64x86icli5x" path="res://game/screens/friend_browser.gd" id="1_y84ug"]
+
+[node name="FriendBrowser" type="Control" unique_id=362449999]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y84ug")
+
+[node name="OfflineLabel" type="Label" parent="." unique_id=1759197545]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 312.0
+offset_right = 1152.0
+offset_bottom = 335.0
+text = "Steam is offline."
+horizontal_alignment = 1
+
+[node name="EntriesContainer" type="MarginContainer" parent="." unique_id=908244932]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 43
+theme_override_constants/margin_top = 43
+theme_override_constants/margin_right = 43
+theme_override_constants/margin_bottom = 43
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EntriesContainer" unique_id=1736695391]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EntriesContainer/ScrollContainer" unique_id=2062555815]
+layout_mode = 2
+
+[node name="RefreshButton" type="Button" parent="." unique_id=890118097]
+layout_mode = 0
+offset_left = 1084.0
+offset_right = 1152.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Refresh"
+
+[connection signal="pressed" from="RefreshButton" to="." method="_refresh"]

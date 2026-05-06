@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dbkm3ut36e2e7"]
+
+[ext_resource type="Theme" uid="uid://cij2bbtyvqe2l" path="res://game/theme.tres" id="1_emt18"]
+[ext_resource type="Script" uid="uid://brkec6jruergd" path="res://game/main.gd" id="1_xtpaf"]
+[ext_resource type="Script" uid="uid://d1o87gqrkrfgp" path="res://game/dialogue.gd" id="2_emt18"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_emt18"]
+properties/0/path = NodePath("MarginContainer/RichTextLabel:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Label:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("MarginContainer/RichTextLabel:visible_characters")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("MarginContainer/RichTextLabel:visible_ratio")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("MarginContainer/RichTextLabel:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[node name="Game" type="Control" unique_id=1469390727]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_emt18")
+script = ExtResource("1_xtpaf")
+
+[node name="Dialogue" type="Node" parent="." unique_id=1950543551 node_paths=PackedStringArray("background", "body_label", "text_container")]
+unique_name_in_owner = true
+script = ExtResource("2_emt18")
+background = NodePath("../TextureRect")
+text_speed = 35.0
+auto_pause_duration = 0.8
+name_style = 2
+body_label = NodePath("../MarginContainer/RichTextLabel")
+text_container = NodePath("../MarginContainer/RichTextLabel")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=903787943]
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=539047460]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=871682442]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 17
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 17
+theme_override_constants/margin_bottom = 17
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1625168734]
+layout_mode = 2
+mouse_filter = 2
+fit_content = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=895736306]
+replication_config = SubResource("SceneReplicationConfig_emt18")
+
+[node name="AdvanceButton" type="Button" parent="." unique_id=799438594]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 232.0
+offset_right = 115.0
+offset_bottom = 263.0
+text = "NEXT"
+
+[node name="Button" type="Button" parent="." unique_id=215460558]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 345.0
+offset_right = 619.0
+offset_bottom = 376.0
+text = "x"
+
+[node name="Label" type="Label" parent="." unique_id=1059875970]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 251.0
+offset_right = 514.0
+offset_bottom = 274.0
+
+[connection signal="pressed" from="AdvanceButton" to="." method="_on_advance_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
