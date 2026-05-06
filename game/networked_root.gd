@@ -32,9 +32,9 @@ func set_up_networking():
 	
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("advance"):
-		%Dialogue.request_advance()
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("advance"):
+		#%Dialogue.request_advance()
 
 func _on_player_connected(player_id: int, _player_info: Dictionary) -> void:
 	#TODO: Figure out what _player_info is meant to do, and make it a Class
@@ -71,6 +71,12 @@ func spawn_player(player_id: int) -> Node3D:
 	return player
 
 #endregion
+
+func start_game_singleplayer():
+	Global.game_mode = Global.GameMode.SINGLEPLAYER
+	%GameSpawner.spawn(1)
+	set_screen("")
+	# TODO add singleplayer mechanics
 
 
 func spawn_game(player_id) -> Game:

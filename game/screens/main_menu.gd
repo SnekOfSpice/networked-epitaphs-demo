@@ -8,7 +8,7 @@ func _ready() -> void:
 	Network.active_network_type = Network.MultiplayerNetworkType.DISABLED
 
 func _on_local_game_button_pressed() -> void:
-	Global.root
+	Global.root.start_game_singleplayer()
 
 
 func _on_steam_browse_button_pressed() -> void:

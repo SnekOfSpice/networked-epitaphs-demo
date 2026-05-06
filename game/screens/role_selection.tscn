@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://baj248t3hxkix"]
+
+[ext_resource type="Script" uid="uid://641rgq6fw4sm" path="res://game/screens/role_selection.gd" id="1_lrxb0"]
+[ext_resource type="Texture2D" uid="uid://bekf8f8po37p1" path="res://game/characters/hacker.png" id="2_h4b05"]
+[ext_resource type="Texture2D" uid="uid://1krschqrxx2l" path="res://game/characters/android.png" id="3_gqhum"]
+
+[node name="RoleSelection" type="Control" unique_id=1868433335]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lrxb0")
+
+[node name="TextureHacker" type="TextureRect" parent="." unique_id=708014272]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -400.0
+offset_right = 603.0
+offset_bottom = 400.0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0, 0.5)
+texture = ExtResource("2_h4b05")
+
+[node name="TextureAndroid" type="TextureRect" parent="." unique_id=1428164041]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -605.0
+offset_top = -400.0
+offset_bottom = 400.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0.5)
+texture = ExtResource("3_gqhum")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=27526645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 43
+theme_override_constants/margin_top = 43
+theme_override_constants/margin_right = 43
+theme_override_constants/margin_bottom = 43
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=491829909]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1997850065]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="HackerLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=383666341]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hacker is unselected"
+
+[node name="HackerButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1327695668]
+layout_mode = 2
+text = "Select Hacker"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=884814843]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="AndroidLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=288024762]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Android is unselected"
+
+[node name="AndroidButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=269836031]
+layout_mode = 2
+text = "Select Android"
+
+[node name="ReadyLabel" type="Label" parent="." unique_id=1164412402]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -124.0
+offset_right = 24.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Hacker: press space to get ready
+Android: press up to get ready
+swapping roles wipes this"
+
+[node name="HackerReadyCheckBox" type="CheckBox" parent="." unique_id=386005272]
+unique_name_in_owner = true
+z_index = 18
+layout_mode = 0
+offset_left = 444.0
+offset_top = 583.0
+offset_right = 525.0
+offset_bottom = 614.0
+text = "hacker"
+
+[node name="AndroidReadyCheckBox" type="CheckBox" parent="." unique_id=702080488]
+unique_name_in_owner = true
+z_index = 18
+layout_mode = 0
+offset_left = 649.0
+offset_top = 583.0
+offset_right = 730.0
+offset_bottom = 614.0
+text = "android"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HackerButton" to="." method="_on_hacker_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/AndroidButton" to="." method="_on_android_button_pressed"]
