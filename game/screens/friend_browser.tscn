@@ -1,6 +1,30 @@
 [gd_scene format=3 uid="uid://q3c5wnsk5mdl"]
 
 [ext_resource type="Script" uid="uid://dm64x86icli5x" path="res://game/screens/friend_browser.gd" id="1_y84ug"]
+[ext_resource type="Texture2D" uid="uid://bl2a2u4tgh8e3" path="res://game/ui/common/spinner0.png" id="2_vcrag"]
+[ext_resource type="Texture2D" uid="uid://dxemje5ey7o" path="res://game/ui/common/spinner1.png" id="3_n45gp"]
+[ext_resource type="Texture2D" uid="uid://ciyoq23kwnxbw" path="res://game/ui/common/spinner2.png" id="4_bsyw8"]
+[ext_resource type="Texture2D" uid="uid://cpyhxb02iymea" path="res://game/ui/common/spinner3.png" id="5_vpkde"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wja7q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vcrag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n45gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bsyw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vpkde")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="FriendBrowser" type="Control" unique_id=362449999]
 layout_mode = 3
@@ -33,10 +57,11 @@ theme_override_constants/margin_bottom = 43
 [node name="ScrollContainer" type="ScrollContainer" parent="EntriesContainer" unique_id=1736695391]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EntriesContainer/ScrollContainer" unique_id=2062555815]
+[node name="LobbyList" type="VBoxContainer" parent="EntriesContainer/ScrollContainer" unique_id=2062555815]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PlaceholderLabel" type="Label" parent="EntriesContainer/ScrollContainer/VBoxContainer" unique_id=1294631588]
+[node name="PlaceholderLabel" type="Label" parent="EntriesContainer/ScrollContainer/LobbyList" unique_id=1294631588]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -55,10 +80,34 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -8.0
+offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Back"
+
+[node name="Joining" type="ColorRect" parent="." unique_id=899384988]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="Joining" unique_id=711337238]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spinner" type="AnimatedSprite2D" parent="Joining/Control" unique_id=1451483969]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_wja7q")
 
 [connection signal="pressed" from="RefreshButton" to="." method="_refresh"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

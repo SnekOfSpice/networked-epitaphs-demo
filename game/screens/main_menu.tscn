@@ -31,7 +31,6 @@ text = "MAIN MENU"
 horizontal_alignment = 1
 
 [node name="LocalGameButton" type="Button" parent="VBoxContainer" unique_id=1603728170]
-visible = false
 layout_mode = 2
 text = "Start Local Game"
 
@@ -53,17 +52,16 @@ layout_mode = 2
 text = "Steam is offline."
 horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1241569419]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer" unique_id=1535197608]
-layout_mode = 2
-
-[node name="ENetHostButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=206611372]
+[node name="ENetHostButton" type="Button" parent="VBoxContainer" unique_id=206611372]
 layout_mode = 2
 text = "Play online via IP"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=1779208859]
+layout_mode = 2
+text = "Options"
 
 [connection signal="pressed" from="VBoxContainer/LocalGameButton" to="." method="_on_local_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SteamContainer/SteamHostButton" to="." method="_on_steam_host_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SteamContainer/SteamBrowseButton" to="." method="_on_steam_browse_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/ENetHostButton" to="." method="_on_e_net_host_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ENetHostButton" to="." method="_on_e_net_host_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

@@ -37,11 +37,15 @@ func _on_ip_text_submitted(new_text: String) -> void:
 		%JoinErrorLabel.modulate.a = 1
 		error_tween.tween_property(%JoinErrorLabel, "modulate:a", 0, 2).set_delay(2)
 
+var is_host := false
 
 func _on_host_pressed() -> void:
 	Network.ip_address = %YourIPLabel.text
 	become_host()
 func become_host():
+	if is_host:
+		return
+	is_host = true
 	Network.become_host()
 	%HostingBlocker.show()
 	%HostingAtLabel.text = str(Network.ip_address)
@@ -53,11 +57,12 @@ func _on_join_pressed() -> void:
 
 
 func _on_back_pressed() -> void:
-	Global.root.set_screen("main_menu")
+	ScreenManager.set_screen("main_menu")
 
 
 func _on_copy_ip_button_pressed() -> void:
 	DisplayServer.clipboard_set(%YourIPLabel.text)
+
 
 
 func _on_host_locally_button_pressed() -> void:

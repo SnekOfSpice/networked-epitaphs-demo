@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bs2hgmjiiesf3"]
+
+[ext_resource type="Script" uid="uid://7o7nxanfjp13" path="res://game/autoload/networked_root.gd" id="1_1tnww"]
+
+[node name="NetworkedRoot" type="Node" unique_id=1721087486]
+script = ExtResource("1_1tnww")

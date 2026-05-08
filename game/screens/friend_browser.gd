@@ -4,6 +4,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_refresh()
+	%Joining.hide()
 
 func _refresh():
 	var steam_running := Steam.isSteamRunning()
@@ -12,6 +13,21 @@ func _refresh():
 	
 	if steam_running:
 		%PlaceholderLabel.text = str(get_friends_in_lobbies())
+		var lobbies_by_friend := get_friends_in_lobbies()
+		for friend_id in lobbies_by_friend.keys():
+			var lobby_id : int = lobbies_by_friend.get(friend_id)
+			var button := Button.new()
+			var nickname = Steam.getFriendPersonaName(friend_id)
+			button.text = nickname
+			button.pressed.connect(
+				func():
+					%EntriesContainer.hide()
+					Network.steam_lobby_id = lobby_id
+					Network.join_as_client()
+					%Joining.show()
+					%Spinner.play("default")
+			)
+			%LobbyList.add_child(button)
 
 func get_friends_in_lobbies() -> Dictionary:
 	var results: Dictionary = {}
@@ -52,4 +68,4 @@ func is_a_friend_still_in_lobby(steam_id: int, lobby_id: int) -> bool:
 
 
 func _on_button_pressed() -> void:
-	Global.root.set_screen("main_menu")
+	ScreenManager.set_screen("main_menu")

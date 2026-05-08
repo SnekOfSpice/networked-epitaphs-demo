@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dql1v0de68ydk"]
+
+[ext_resource type="Script" uid="uid://cnx0gvi2l38dg" path="res://game/autoload/game_holder.gd" id="1_a0pkt"]
+
+[node name="GameHolder" type="Node" unique_id=53342733]
+script = ExtResource("1_a0pkt")
+
+[node name="Game" type="Node" parent="." unique_id=1134339640]
+
+[node name="GameSpawner" type="MultiplayerSpawner" parent="." unique_id=86577249]
+unique_name_in_owner = true
+spawn_path = NodePath("../Game")

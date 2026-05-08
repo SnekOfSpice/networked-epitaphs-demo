@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cmk57xf687fmc"]
+
+[ext_resource type="Script" uid="uid://cyrjmgvo627cp" path="res://game/autoload/screen_manager.gd" id="1_vuigx"]
+
+[node name="ScreenManager" type="PanelContainer" unique_id=2117285711]
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_vuigx")

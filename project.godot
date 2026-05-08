@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="networked epitaphs demo"
-run/main_scene="uid://bs2hgmjiiesf3"
+run/main_scene="uid://c3ljesysqxk6c"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -28,6 +28,10 @@ ParserEvents="*uid://dinb6lf0qoexi"
 SteamInfo="*uid://bnrrf8q027js4"
 Network="*uid://cq3b8bnp6no5g"
 Global="*uid://cjctvukjovygy"
+PlayerHolder="*uid://ckbdmcekuc4qk"
+GameHolder="*uid://dql1v0de68ydk"
+ScreenManager="*uid://cmk57xf687fmc"
+NetworkedRoot="*uid://bs2hgmjiiesf3"
 
 [diisis]
 

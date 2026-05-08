@@ -2,7 +2,7 @@
 extends Node
 
 
-var root : NetworkedRoot
+var root
 
 enum GameMode{
 	SINGLEPLAYER,

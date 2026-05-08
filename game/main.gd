@@ -6,7 +6,7 @@ func _ready() -> void:
 	%Dialogue.set_physics_process(multiplayer.is_server())
 	Parser.reset_and_start()
 	
-	Global.root.set_screen("role_selection")
+	ScreenManager.set_screen("role_selection")
 
 #func _unhandled_input(event: InputEvent) -> void:
 	#if event.is_action_pressed("advance"):
