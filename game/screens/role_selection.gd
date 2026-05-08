@@ -12,6 +12,12 @@ func _ready() -> void:
 		set_want_role(1, Global.Role.HACKER)
 	else:
 		set_want_role(multiplayer.get_unique_id(), Global.Role.ANDROID)
+	
+	if Global.game_mode == Global.GameMode.SINGLEPLAYER:
+		hacker_target_modulate = Color.WHITE
+		android_target_modulate = Color.WHITE
+		hacker_target_scale = Vector2.ONE
+		android_target_scale = Vector2.ONE
 
 @rpc("any_peer", "call_local")
 func set_want_role(player_id : int, role : Global.Role):
