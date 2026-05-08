@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bl72hrtx7jfkc" path="res://game/autoload/global.gd" id="1_3kgjx"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3kgjx"]
+properties/0/path = NodePath(".:game_mode")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Global" type="Node" unique_id=386764322]
 script = ExtResource("1_3kgjx")

@@ -6,6 +6,8 @@ var player_id_hacker : int
 var player_id_android : int
 
 func _ready() -> void:
+	%SingleplayerContainer.visible = Global.game_mode == Global.GameMode.SINGLEPLAYER
+	%MultiplayerContainer.visible = Global.game_mode != Global.GameMode.SINGLEPLAYER
 	if multiplayer.is_server():
 		set_want_role(1, Global.Role.HACKER)
 	else:
@@ -69,9 +71,9 @@ func _on_android_button_pressed() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if is_hacker() and event.is_action_pressed("hacker_confirm"):
+	if (is_hacker() or Global.game_mode == Global.GameMode.SINGLEPLAYER) and event.is_action_pressed("hacker_confirm"):
 		set_ready(Global.Role.HACKER, true)
-	if is_android() and event.is_action_pressed("android_confirm"):
+	if (is_android() or Global.game_mode == Global.GameMode.SINGLEPLAYER) and event.is_action_pressed("android_confirm"):
 		set_ready(Global.Role.ANDROID, true)
 
 
@@ -82,4 +84,6 @@ func set_ready(role : Global.Role, status : bool) -> void:
 		%AndroidReadyCheckBox.set_pressed_no_signal(status)
 	
 	if %HackerReadyCheckBox.button_pressed and %AndroidReadyCheckBox.button_pressed:
-		print("START GAME")
+		if multiplayer.is_server() or Global.game_mode == Global.GameMode.SINGLEPLAYER:
+			Parser.reset_and_start()
+			ScreenManager.clear()

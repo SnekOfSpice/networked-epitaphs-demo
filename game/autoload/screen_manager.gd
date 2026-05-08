@@ -8,7 +8,8 @@ func _ready() -> void:
 @rpc("any_peer","call_local")
 func set_screen(screen_name : String, clear_previous := true):
 	if clear_previous:
-		clear()
+		for child in get_children():
+			child.queue_free()
 	
 	if screen_name.is_empty():
 		hide()
@@ -19,5 +20,4 @@ func set_screen(screen_name : String, clear_previous := true):
 	show()
 
 func clear():
-	for child in get_children():
-		child.queue_free()
+	set_screen("", true)

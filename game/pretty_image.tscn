@@ -6,6 +6,7 @@
 noise = SubResource("FastNoiseLite_0fj5r")
 
 [node name="PrettyImage" type="Control" unique_id=1017895612]
+z_index = -500
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

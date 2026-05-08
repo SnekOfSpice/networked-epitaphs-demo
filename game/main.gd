@@ -4,7 +4,7 @@ class_name Game
 func _ready() -> void:
 	%Dialogue.set_process(multiplayer.is_server())
 	%Dialogue.set_physics_process(multiplayer.is_server())
-	Parser.reset_and_start()
+	#Parser.reset_and_start()
 	
 	ScreenManager.set_screen("role_selection")
 

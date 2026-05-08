@@ -1,7 +1,29 @@
 extends Node
 
+const DEFAULT_PORT := 6721
+var external_ip : String
 
 func _ready() -> void:
+	# doesn't work?
+	#var upnp := UPNP.new()
+	#var discover_result := upnp.discover()
+	#
+	#if discover_result == UPNP.UPNP_RESULT_SUCCESS:
+		#if upnp.get_gateway() and upnp.get_gateway().is_valid_gateway():
+			#
+			#var map_result_udp = upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, "godot_udp", "UDP")
+			#var map_result_tcp = upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, "godot_tcp", "TCP")
+			#
+			#if not map_result_udp == UPNP.UPNP_RESULT_SUCCESS:
+				#upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, "", "UDP")
+			#if not map_result_tcp == UPNP.UPNP_RESULT_SUCCESS:
+				#upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, "", "TCP")
+	#
+	#external_ip = upnp.query_external_address() 
+#	
+	#upnp.delete_port_mapping(DEFAULT_PORT, "UDP")
+	#upnp.delete_port_mapping(DEFAULT_PORT, "TCP")
+	
 	Global.root = self
 	set_up_networking()
 
@@ -47,5 +69,4 @@ func remove_player(player_id: int) -> void:
 func start_game_singleplayer():
 	Global.game_mode = Global.GameMode.SINGLEPLAYER
 	GameHolder.spawn(1)
-	ScreenManager.set_screen("")
 	# TODO add singleplayer mechanics
