@@ -15,13 +15,6 @@ script = ExtResource("1_qyauo")
 unique_name_in_owner = true
 layout_mode = 0
 
-[node name="Label" type="Label" parent="." unique_id=486861820]
-layout_mode = 0
-offset_left = 198.0
-offset_top = 45.0
-offset_right = 238.0
-offset_bottom = 68.0
-
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1894233551]
 layout_mode = 1
 anchors_preset = 15
@@ -34,34 +27,106 @@ theme_override_constants/margin_top = 43
 theme_override_constants/margin_right = 43
 theme_override_constants/margin_bottom = 43
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=434799536]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=475844884]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=434799536]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="IP" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=823922402]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1325974182]
+layout_mode = 2
+text = "Host (give your IP to the girl you want to play with)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1964876726]
+layout_mode = 2
+
+[node name="YourIPLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=486861820]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Your IP is"
+
+[node name="Host" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=999753194]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Host at this IP"
+
+[node name="CopyIPButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1776176320]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Copy IP"
+
+[node name="HostLocallyButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1034021080]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Host Local"
+
+[node name="HostingAtLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=322556296]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hosting at:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1705226924]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=989582372]
+layout_mode = 2
+text = "Join (enter someone else's IP)"
+
+[node name="IP" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=823922402]
 unique_name_in_owner = true
 layout_mode = 2
 text = "127.0.0.1"
 placeholder_text = "IP Address"
 expand_to_text_length = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=473386290]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1465030070]
 layout_mode = 2
 
-[node name="Join" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1240085143]
+[node name="Join" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1240085143]
 layout_mode = 2
+size_flags_horizontal = 0
 text = "Join
 "
 
-[node name="Host" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=999753194]
+[node name="JoinErrorLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1383858065]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Host"
+theme_override_colors/font_color = Color(0.96, 0.24, 0.24, 1)
+text = "Error joining!"
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1657291032]
+[node name="HostingBlocker" type="ColorRect" parent="MarginContainer" unique_id=259112889]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
+color = Color(0.0056611504, 0.0056611514, 0.00566115, 0.4627451)
+
+[node name="Label" type="Label" parent="MarginContainer/HostingBlocker" unique_id=518140323]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hosting, waiting for other player."
+
+[node name="Back" type="Button" parent="MarginContainer" unique_id=1657291032]
+layout_mode = 2
+size_flags_vertical = 8
 text = "Back"
 
-[connection signal="text_submitted" from="MarginContainer/VBoxContainer/IP" to="." method="_on_ip_text_submitted"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Join" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CopyIPButton" to="." method="_on_copy_ip_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HostLocallyButton" to="." method="_on_host_locally_button_pressed"]
+[connection signal="text_submitted" from="MarginContainer/HBoxContainer/VBoxContainer2/IP" to="." method="_on_ip_text_submitted"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]

@@ -25,7 +25,13 @@ offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=603599888]
+layout_mode = 2
+text = "MAIN MENU"
+horizontal_alignment = 1
+
 [node name="LocalGameButton" type="Button" parent="VBoxContainer" unique_id=1603728170]
+visible = false
 layout_mode = 2
 text = "Start Local Game"
 

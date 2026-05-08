@@ -10,7 +10,8 @@ func _refresh():
 	%OfflineLabel.visible = not steam_running
 	%EntriesContainer.visible = steam_running
 	
-	print(get_friends_in_lobbies())
+	if steam_running:
+		%PlaceholderLabel.text = str(get_friends_in_lobbies())
 
 func get_friends_in_lobbies() -> Dictionary:
 	var results: Dictionary = {}
@@ -48,3 +49,7 @@ func is_a_friend_still_in_lobby(steam_id: int, lobby_id: int) -> bool:
 
 	# Return true if they are in the same game and have the same lobby_id
 	return app_id == Steam.getAppID() and lobby is int and lobby == lobby_id
+
+
+func _on_button_pressed() -> void:
+	Global.root.set_screen("main_menu")
